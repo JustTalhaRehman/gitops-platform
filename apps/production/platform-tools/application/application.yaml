@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform-tools
+  namespace: argocd
+  labels:
+    app: platform-tools
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/your-username/gitops-platform.git
+    targetRevision: HEAD
+    path: apps/production/platform-tools
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: platform-tools
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  revisionHistoryLimit: 3
