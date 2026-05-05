@@ -1,0 +1,5 @@
+apiVersion: v2
+name: monitoring
+description: Monitoring stack — Grafana, Loki, Tempo, Mimir
+type: application
+version: 0.1.0
