@@ -1,0 +1,18 @@
+grafana:
+  enabled: true
+  adminUser: admin
+  # adminPassword is pulled from a Kubernetes secret — do not set it here
+  persistence:
+    enabled: true
+    size: 10Gi
+
+loki:
+  enabled: true
+  retention: 30d
+
+tempo:
+  enabled: true
+
+mimir:
+  enabled: true
+  retention: 90d
