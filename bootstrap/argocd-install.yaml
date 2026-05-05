@@ -1,0 +1,17 @@
+# Bootstrap ArgoCD into a fresh cluster.
+# This is a thin wrapper — it simply points at the upstream stable install
+# manifest. Pin to a specific version for production use.
+#
+# Usage:
+#   kubectl create namespace argocd
+#   kubectl apply -n argocd -f bootstrap/argocd-install.yaml
+#
+# After applying, run:
+#   kubectl apply -f apps/production/main-pipeline-app.yaml
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+  labels:
+    managed-by: bootstrap
