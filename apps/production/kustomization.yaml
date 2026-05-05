@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  # Wave 0-1: Infrastructure and platform tools
+  - platform-tools/application/application.yaml
+
+  # Wave 3+: Application workloads
+  - monitoring/application/application.yaml
+
+  # Self-reference: keeps this pipeline alive
+  - main-pipeline-app.yaml
+
+labels:
+  - pairs:
+      environment: production
+      managed-by: argocd
